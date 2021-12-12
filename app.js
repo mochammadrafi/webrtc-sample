@@ -7,6 +7,12 @@
  */
 'use strict';
 
+// Polyfill in Firefox.
+// See https://blog.mozilla.org/webrtc/getdisplaymedia-now-available-in-adapter-js/
+if (adapter.browserDetails.browser == 'firefox') {
+    adapter.browserShim.shimGetDisplayMedia(window, 'screen');
+}  
+
 // Put variables in global scope to make them available to the browser console.
 const constraints = window.constraints = {
     audio: false,
